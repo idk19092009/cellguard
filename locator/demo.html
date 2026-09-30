@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>CellGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header>
+    <div class="identity"><span class="identity-mark">CG</span><div><h1>CellGuard</h1><p>Scan review</p></div></div>
+    <span id="systemStatus" class="system-status" role="status">Loading model</span>
+  </header>
+  <main>
+    <section class="scan-panel" aria-label="CT scan">
+      <div class="scan-toolbar"><span>Scan image</span><label class="upload-button" for="imageUpload">Upload CT<input id="imageUpload" type="file" accept="image/png,image/jpeg" disabled></label></div>
+      <div id="scanFrame" class="scan-frame">
+        <div id="emptyState" class="empty-state"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 8H8v10M46 8h10v10M8 46v10h10M56 46v10H46M32 20v24M20 32h24"/></svg><p>Upload a CT image</p><span>JPG or PNG · up to 10 MB</span></div>
+        <img id="preview" alt="Uploaded CT scan" hidden>
+        <canvas id="marker" aria-label="Detected location" hidden></canvas>
+      </div>
+    </section>
+    <aside class="analysis-panel" aria-label="Analysis">
+      <p class="eyebrow">Review</p>
+      <div id="resultBlock" hidden><p class="field-label">AI result</p><h2 id="resultLabel"></h2><p id="resultScore" class="score"></p></div>
+      <p id="analysisStatus" class="analysis-status" role="status" aria-live="polite">Ready for a scan.</p>
+      <section id="locationBlock" class="location-block" aria-label="Image location" hidden>
+        <p id="locationLabel" class="field-label">Image location</p>
+        <div id="coordinates" class="coordinates" hidden><div><span>X</span><strong id="coordinateX"></strong></div><div><span>Y</span><strong id="coordinateY"></strong></div></div>
+        <p id="locationStatus" role="status"></p>
+        <button id="manualLocation" type="button" class="review-button" hidden>Mark location</button>
+        <button id="confirmTarget" type="button" class="confirm-button" hidden>Doctor confirm &amp; move 3D hand</button>
+        <p id="handoffNote" class="handoff-note" hidden>Confirm the image point before starting the 3D demonstration. Movement is simulated.</p>
+      </section>
+      <p id="errorMessage" class="error-message" role="alert" hidden></p>
+    </aside>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
