@@ -1,0 +1,12 @@
+{
+  "file": "cellguard_large_tumour_v1.pt",
+  "sha256": "6e6ce4ea9600a79a3269ddb16b5567a1dacd56dd1a32d74e4da7ca647396737e",
+  "applies_to": "malignant",
+  "probability_threshold": 0.95,
+  "minimum_component_area_at_512": 128,
+  "minimum_box_area_at_512": 4000,
+  "minimum_mean_region_score": 0.97,
+  "maximum_existing_to_new_box_area_ratio": 0.25,
+  "source": "NSCLC-Radiomics primary tumour expert masks, with MSD Lung training data",
+  "policy_note": "Override only a distant tiny point or an abstention for a large proposed region; rule evaluated on validation before test and LUNGx regression"
+}

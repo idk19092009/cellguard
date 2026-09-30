@@ -1,0 +1,12 @@
+{
+  "file": "cellguard_tumour_v1.pt",
+  "sha256": "0622a1a8ff6189aff6aac24fbf36ad38ffb0ba77cdad19a6ac29112b7a1b6a0b",
+  "threshold": 0.35,
+  "policy": "baseline_first",
+  "applies_to": "malignant",
+  "training_patients": 43,
+  "validation_patients": 10,
+  "test_patients": 10,
+  "source": "Medical Segmentation Decathlon Task06 Lung",
+  "evaluation_note": "exploratory; policy revised after regression checks"
+}
