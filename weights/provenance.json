@@ -1,0 +1,58 @@
+{
+  "source": "https://huggingface.co/Lien-Feng/Lightweight-2-5D-LUNA16",
+  "source_revision": "d9bc7ec3f06fab778f941fd8f05de145f1a7332c",
+  "configuration": "Exp1_2D_Loose",
+  "license": "CC-BY-4.0",
+  "files": {
+    "luna16_2d_fold0.pt": {
+      "bytes": 5451162,
+      "sha256": "b106dc22c7fd860285c4e0554726c94b396b0d8c5452e767a93df138a27d0339",
+      "source_lfs_sha256": "b106dc22c7fd860285c4e0554726c94b396b0d8c5452e767a93df138a27d0339"
+    },
+    "luna16_2d_fold1.pt": {
+      "bytes": 5451162,
+      "sha256": "af1b5a71f7b971a30787372ccfcdad84cc6ea8fa764bf9d40efa3c87c33c6b88",
+      "source_lfs_sha256": "af1b5a71f7b971a30787372ccfcdad84cc6ea8fa764bf9d40efa3c87c33c6b88"
+    },
+    "luna16_2d_fold2.pt": {
+      "bytes": 5451162,
+      "sha256": "4a1223b2a377350355d912453e77aafc57baf00fcddcdce6ea4487a9d5bfaec9",
+      "source_lfs_sha256": "4a1223b2a377350355d912453e77aafc57baf00fcddcdce6ea4487a9d5bfaec9"
+    },
+    "luna16_2d_fold3.pt": {
+      "bytes": 5451162,
+      "sha256": "864959f0b15064cf6a85bf63037724bef0b62a8708e7499ffed45e622257eb48",
+      "source_lfs_sha256": "864959f0b15064cf6a85bf63037724bef0b62a8708e7499ffed45e622257eb48"
+    },
+    "luna16_2d_fold4.pt": {
+      "bytes": 5451162,
+      "sha256": "14ea9dd29d3b15f3cb79800176d4b8360ae913d50faa8eb83221daa05f7b7b12",
+      "source_lfs_sha256": "14ea9dd29d3b15f3cb79800176d4b8360ae913d50faa8eb83221daa05f7b7b12"
+    },
+    "luna16_2d_fold5.pt": {
+      "bytes": 5451162,
+      "sha256": "d19f7aad11df4fd470667398c62c9161c04b6fa7eaa95813e0c69b0d113d80fd",
+      "source_lfs_sha256": "d19f7aad11df4fd470667398c62c9161c04b6fa7eaa95813e0c69b0d113d80fd"
+    },
+    "luna16_2d_fold6.pt": {
+      "bytes": 5451162,
+      "sha256": "c3725171a472ac94dfd61e9b3ed80e8be33902f89bf5352742e77ee332cefd36",
+      "source_lfs_sha256": "c3725171a472ac94dfd61e9b3ed80e8be33902f89bf5352742e77ee332cefd36"
+    },
+    "luna16_2d_fold7.pt": {
+      "bytes": 5451162,
+      "sha256": "1cc49b16eb6ff14a8c19e5c3abeef25f1e9e892d73b46785acc10c548f6ccaad",
+      "source_lfs_sha256": "1cc49b16eb6ff14a8c19e5c3abeef25f1e9e892d73b46785acc10c548f6ccaad"
+    },
+    "luna16_2d_fold8.pt": {
+      "bytes": 5451162,
+      "sha256": "7772891ac36bd75c6e618673be273c509a1d8c4c303dafc6e1faea14a3f5492f",
+      "source_lfs_sha256": "7772891ac36bd75c6e618673be273c509a1d8c4c303dafc6e1faea14a3f5492f"
+    },
+    "luna16_2d_fold9.pt": {
+      "bytes": 5451162,
+      "sha256": "b31ad2337f51c77ce5b678f321981d14a43a2bdc72dfa870cf81cd9a94fe7dee",
+      "source_lfs_sha256": "b31ad2337f51c77ce5b678f321981d14a43a2bdc72dfa870cf81cd9a94fe7dee"
+    }
+  }
+}
