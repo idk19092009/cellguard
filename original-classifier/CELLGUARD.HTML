@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; text-align: center; background: #1a1a2e; color: white; padding: 20px; }
+        #preview-container { margin: 20px auto; }
+        #preview-container img { max-width: 300px; border: 2px solid white; border-radius: 8px; }
+        #label-container div { font-size: 20px; margin: 5px; }
+        #robot-status { font-size: 26px; padding: 20px; border-radius: 10px; margin: 20px auto; width: 70%; }
+        input[type=file] { padding: 15px; font-size: 16px; margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>CellGuard - AI Detection System</h1>
+    <p>Upload a CT scan image to analyze:</p>
+    <input type="file" id="imageUpload" accept="image/*" onchange="handleImage(event)">
+    
+    <div id="preview-container"></div>
+    <div id="label-container"></div>
+    <div id="robot-status">Awaiting image upload...</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/zYUF_tPw1/";
+
+        let model, maxPredictions;
+        let modelLoaded = false;
+
+        async function loadModel() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            modelLoaded = true;
+            document.getElementById("robot-status").innerHTML = "✅ Model ready. Upload an image.";
+        }
+
+        // Load model as soon as page opens
+        loadModel();
+
+        function handleImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.onload = function() {
+                    document.getElementById("preview-container").innerHTML = "";
+                    document.getElementById("preview-container").appendChild(img);
+                    predict(img);
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function predict(imgElement) {
+            if (!modelLoaded) {
+                alert("Model still loading, please wait a moment and try again.");
+                return;
+            }
+
+            const prediction = await model.predict(imgElement);
+            let topClass = "";
+            let topConfidence = 0;
+
+            const labelContainer = document.getElementById("label-container");
+            labelContainer.innerHTML = "";
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(1) + "%";
+                const div = document.createElement("div");
+                div.innerHTML = classPrediction;
+                labelContainer.appendChild(div);
+
+                if (prediction[i].probability > topConfidence) {
+                    topConfidence = prediction[i].probability;
+                    topClass = prediction[i].className;
+                }
+            }
+
+            updateRobotStatus(topClass, Math.round(topConfidence * 100));
+        }
+
+        function updateRobotStatus(className, confidence) {
+            const statusDiv = document.getElementById("robot-status");
+            const c = className.toLowerCase();
+
+            if (c === "malignant" && confidence >= 90) {
+                statusDiv.style.background = "#ff4444";
+                statusDiv.innerHTML = "HIGH RISK (" + confidence + "%) - AUTO-TARGETING - AWAIT DOCTOR CONFIRMATION";
+            } else if (c === "malignant") {
+                statusDiv.style.background = "#ffaa00";
+                statusDiv.innerHTML = "UNCERTAIN (" + confidence + "%) - FLAGGED FOR DOCTOR REVIEW";
+            } else if (c === "benign") {
+                statusDiv.style.background = "#4488ff";
+                statusDiv.innerHTML = "BENIGN (" + confidence + "%) - MONITORING ONLY";
+            } else {
+                statusDiv.style.background = "#44aa44";
+                statusDiv.innerHTML = "NORMAL (" + confidence + "%) - NO ACTION NEEDED";
+            }
+        }
+    </script>
+</body>
+</html>
