@@ -4,3 +4,4 @@ ultralytics==8.4.164
 opencv-python==5.0.0.93
 numpy==2.4.4
 Pillow==12.3.0
+pyserial==3.5
